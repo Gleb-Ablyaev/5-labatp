@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Список проектов";
+}
+
+@using WebApplication3.Models
+@model List<model>
+
+<h2>@ViewBag.Title</h2>
+
+<style>
+    h2 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        
+        margin: 20px 0;
+    }
+
+    .main-btn {
+        display: inline-block;
+        border: none;
+        border-radius: 3px;
+        background-color: #999;
+        color: #fff;
+        font-size: 16px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .main-btn:hover {
+        background-color: #fff;
+        color: #333;
+    }
+    p a {
+        display: inline-block;
+        border: none;
+        border-radius: 3px;
+        background-color: #999;
+        color: #fff;
+        font-size: 16px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    p a:hover {
+        background-color: #fff;
+        color: #333;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Добавить проект", "Create")
+</p>
+
+<style>
+    th{
+        padding: 0px 45px 0px 0px;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].igrokname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].bk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].PhoneNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.balance)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.igrokname)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.bk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = Model.IndexOf(item) }, new { @class = "main-btn" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = Model.IndexOf(item) }, new { @class = "main-btn" })
+            </td>
+        </tr>
+    }
+</table>
